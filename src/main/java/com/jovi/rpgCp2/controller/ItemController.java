@@ -10,11 +10,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
 @RequestMapping("items")
 public class ItemController {
+
+    public record ItemFilters (String nome, String tipo, BigDecimal preco, BigDecimal max, BigDecimal min, String raridade){}
 
     @Autowired
     ItemRepository repository;

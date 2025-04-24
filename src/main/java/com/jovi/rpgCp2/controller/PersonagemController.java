@@ -17,6 +17,8 @@ import java.util.List;
 @Slf4j
 public class PersonagemController {
 
+    public record PersonagemFilters (String nome, String classe){}
+
 
     @Autowired
     private PersonagemRepository repository;
