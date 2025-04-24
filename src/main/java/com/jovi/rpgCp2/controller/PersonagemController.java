@@ -1,5 +1,6 @@
 package com.jovi.rpgCp2.controller;
 
+import com.jovi.rpgCp2.actions.GetbyAction;
 import com.jovi.rpgCp2.personagem.Personagem;
 import com.jovi.rpgCp2.repository.PersonagemRepository;
 import jakarta.validation.Valid;
@@ -17,7 +18,11 @@ import java.util.List;
 @Slf4j
 public class PersonagemController {
 
+
     public record PersonagemFilters (String nome, String classe){}
+
+    @Autowired
+    private GetbyAction gb;
 
     @Autowired
     private PersonagemRepository repository;
@@ -29,18 +34,18 @@ public class PersonagemController {
 
     @GetMapping("{id}")
     public ResponseEntity<Personagem> get(@PathVariable Long id){
-        return ResponseEntity.ok(getPersonagem(id));
+        return ResponseEntity.ok(gb.getPersonagem(id));
     }
 
     @DeleteMapping("{id}")
     public ResponseEntity<Personagem> destroy(Long id) {
-        repository.delete(getPersonagem(id));
+        repository.delete(gb.getPersonagem(id));
         return ResponseEntity.noContent().build();
     }
 
     @PutMapping("{id}")
     public ResponseEntity<Personagem> update(@PathVariable Long id, @RequestBody Personagem personagem){
-        getPersonagem(id);
+        gb.getPersonagem(id);
         personagem.setId(id);
         repository.save(personagem);
         return ResponseEntity.ok(personagem);
@@ -52,8 +57,4 @@ public class PersonagemController {
         return repository.save(personagem);
     }
 
-    public Personagem getPersonagem(Long id){
-        return repository.findById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Personagem não encontrado"));
-    }
 }
