@@ -1,5 +1,6 @@
 package com.jovi.rpgCp2.personagem;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.jovi.rpgCp2.item.Item;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
@@ -34,6 +35,7 @@ public class Personagem {
     private BigDecimal moedas;
 
     @OneToMany(mappedBy = "dono", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("dono")
     private List<Item> itens;
 
     public Personagem( String nome, Classe classe, Integer nivel, BigDecimal moedas){
