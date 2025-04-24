@@ -1,6 +1,5 @@
 package com.jovi.rpgCp2.personagem;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.jovi.rpgCp2.item.Item;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
@@ -35,10 +34,9 @@ public class Personagem {
     private BigDecimal moedas;
 
     @OneToMany(mappedBy = "dono", cascade = CascadeType.ALL)
-    private List<Item> item;
+    private List<Item> itens;
 
-    public Personagem(Long id, String nome, Classe classe, Integer nivel, BigDecimal moedas) {
-        this.id = id;
+    public Personagem( String nome, Classe classe, Integer nivel, BigDecimal moedas){
         this.nome = nome;
         this.classe = classe;
         this.nivel = nivel;
@@ -88,11 +86,11 @@ public class Personagem {
         this.moedas = moedas;
     }
 
-    public List<Item> getItem() {
-        return item;
+    public List<Item> getItens() {
+        return itens;
     }
 
-    public void setItem(Item item) {
-        this.item.add(item);
+    public void setItens(Item itens) {
+        this.itens.add(itens);
     }
 }

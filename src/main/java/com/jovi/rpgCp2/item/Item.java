@@ -29,7 +29,7 @@ public class Item {
     private BigDecimal preco;
 
     @ManyToOne
-    @JsonIgnoreProperties("item")
+    @JsonIgnoreProperties("itens")
     private Personagem dono;
 
     public Item() {
