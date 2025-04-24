@@ -21,7 +21,7 @@ import java.util.List;
 @RestController
 @RequestMapping("itens")
 public class ItemController {
-    public record ItemFilters(String nome, String tipo, BigDecimal preco, BigDecimal max, BigDecimal min,
+    public record ItemFilters(String nome, String tipo, BigDecimal precoMax, BigDecimal precoMin,
                               String raridade) {
     }
 

@@ -3,15 +3,18 @@ package com.jovi.rpgCp2.controller;
 import com.jovi.rpgCp2.actions.GetbyAction;
 import com.jovi.rpgCp2.personagem.Personagem;
 import com.jovi.rpgCp2.repository.PersonagemRepository;
+import com.jovi.rpgCp2.specification.ItemSpecification;
+import com.jovi.rpgCp2.specification.PersonagemSpecification;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("personagens")
@@ -28,8 +31,12 @@ public class PersonagemController {
     private PersonagemRepository repository;
 
     @GetMapping
-    public List<Personagem> index(){
-        return repository.findAll();
+    public Page<Personagem> index(
+            PersonagemFilters filter,
+            @PageableDefault(size = 5, sort = "id", direction = Sort.Direction.DESC)Pageable pageable)
+    {
+        var specification = PersonagemSpecification.withFilters(filter);
+        return repository.findAll(specification, pageable);
     }
 
     @GetMapping("{id}")

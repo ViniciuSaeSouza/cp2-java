@@ -30,9 +30,9 @@ public class ItemSpecification {
                 );
             }
 
-            if (filters.preco() != null) {
+            if (filters.precoMin() != null && filters.precoMax() != null) {
                 predicates.add(
-                        cb.between(root.get("preco"), filters.min(), filters.max())
+                        cb.between(root.get("preco"), filters.precoMin(), filters.precoMax())
                 );
             }
 
