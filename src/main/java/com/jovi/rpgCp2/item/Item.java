@@ -1,5 +1,6 @@
 package com.jovi.rpgCp2.item;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.jovi.rpgCp2.personagem.Personagem;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
@@ -28,6 +29,7 @@ public class Item {
     private BigDecimal preco;
 
     @ManyToOne
+    @JsonIgnoreProperties("item")
     private Personagem dono;
 
     public Item() {

@@ -1,5 +1,6 @@
 package com.jovi.rpgCp2.personagem;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.jovi.rpgCp2.item.Item;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
@@ -33,7 +34,7 @@ public class Personagem {
     @Min(value = 0, message = "Não é possível ter menos de 0 moedas")
     private BigDecimal moedas;
 
-    @OneToMany
+    @OneToMany(mappedBy = "dono", cascade = CascadeType.ALL)
     private List<Item> item;
 
     public Personagem(Long id, String nome, Classe classe, Integer nivel, BigDecimal moedas) {
@@ -91,7 +92,7 @@ public class Personagem {
         return item;
     }
 
-    public void setItem(List<Item> item) {
-        this.item = item;
+    public void setItem(Item item) {
+        this.item.add(item);
     }
 }

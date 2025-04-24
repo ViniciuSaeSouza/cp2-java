@@ -19,7 +19,6 @@ public class PersonagemController {
 
     public record PersonagemFilters (String nome, String classe){}
 
-
     @Autowired
     private PersonagemRepository repository;
 
@@ -53,7 +52,7 @@ public class PersonagemController {
         return repository.save(personagem);
     }
 
-    private Personagem getPersonagem(Long id){
+    public Personagem getPersonagem(Long id){
         return repository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Personagem não encontrado"));
     }
