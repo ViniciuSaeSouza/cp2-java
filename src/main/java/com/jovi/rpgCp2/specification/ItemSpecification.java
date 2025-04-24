@@ -2,7 +2,7 @@ package com.jovi.rpgCp2.specification;
 
 
 import com.jovi.rpgCp2.controller.ItemController;
-import com.jovi.rpgCp2.item.Item;
+import com.jovi.rpgCp2.model.item.Item;
 import jakarta.persistence.criteria.Predicate;
 import org.springframework.data.jpa.domain.Specification;
 

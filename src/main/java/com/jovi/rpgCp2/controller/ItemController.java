@@ -1,7 +1,7 @@
 package com.jovi.rpgCp2.controller;
 
 import com.jovi.rpgCp2.actions.GetbyAction;
-import com.jovi.rpgCp2.item.Item;
+import com.jovi.rpgCp2.model.item.Item;
 import com.jovi.rpgCp2.repository.ItemRepository;
 import com.jovi.rpgCp2.specification.ItemSpecification;
 import jakarta.validation.Valid;
@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 @RestController
 @RequestMapping("itens")
@@ -43,7 +42,7 @@ public class ItemController {
     public Item create(@RequestBody @Valid Item item) {
         var personagem = gb.getPersonagem(item.getDono().getId());
         item.setDono(personagem);
-        personagem.setItens(item);
+        personagem.getItens().add(item);
         return repository.save(item);
     }
 

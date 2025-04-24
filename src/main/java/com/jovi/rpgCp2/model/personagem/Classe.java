@@ -1,4 +1,4 @@
-package com.jovi.rpgCp2.personagem;
+package com.jovi.rpgCp2.model.personagem;
 
 public enum Classe {
     GUERREIRO,

@@ -1,6 +1,6 @@
 package com.jovi.rpgCp2.repository;
 
-import com.jovi.rpgCp2.personagem.Personagem;
+import com.jovi.rpgCp2.model.personagem.Personagem;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 

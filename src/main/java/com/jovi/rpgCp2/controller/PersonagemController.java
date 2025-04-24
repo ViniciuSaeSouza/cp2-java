@@ -1,9 +1,8 @@
 package com.jovi.rpgCp2.controller;
 
 import com.jovi.rpgCp2.actions.GetbyAction;
-import com.jovi.rpgCp2.personagem.Personagem;
+import com.jovi.rpgCp2.model.personagem.Personagem;
 import com.jovi.rpgCp2.repository.PersonagemRepository;
-import com.jovi.rpgCp2.specification.ItemSpecification;
 import com.jovi.rpgCp2.specification.PersonagemSpecification;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
@@ -33,7 +32,7 @@ public class PersonagemController {
     @GetMapping
     public Page<Personagem> index(
             PersonagemFilters filter,
-            @PageableDefault(size = 5, sort = "id", direction = Sort.Direction.DESC)Pageable pageable)
+            @PageableDefault(size = 5, sort = "id", direction = Sort.Direction.ASC)Pageable pageable)
     {
         var specification = PersonagemSpecification.withFilters(filter);
         return repository.findAll(specification, pageable);

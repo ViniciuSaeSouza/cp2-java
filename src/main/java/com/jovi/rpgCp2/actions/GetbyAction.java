@@ -1,7 +1,7 @@
 package com.jovi.rpgCp2.actions;
 
-import com.jovi.rpgCp2.item.Item;
-import com.jovi.rpgCp2.personagem.Personagem;
+import com.jovi.rpgCp2.model.item.Item;
+import com.jovi.rpgCp2.model.personagem.Personagem;
 import com.jovi.rpgCp2.repository.ItemRepository;
 import com.jovi.rpgCp2.repository.PersonagemRepository;
 import org.springframework.beans.factory.annotation.Autowired;

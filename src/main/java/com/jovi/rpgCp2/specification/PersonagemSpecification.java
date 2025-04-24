@@ -1,7 +1,7 @@
 package com.jovi.rpgCp2.specification;
 
 import com.jovi.rpgCp2.controller.PersonagemController;
-import com.jovi.rpgCp2.personagem.Personagem;
+import com.jovi.rpgCp2.model.personagem.Personagem;
 import jakarta.persistence.criteria.Predicate;
 import org.springframework.data.jpa.domain.Specification;
 
